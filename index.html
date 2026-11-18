@@ -1,0 +1,342 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>鳥取市議選2026 かんたんガイド</title>
+<meta name="description" content="令和8年11月22日（日）投票の鳥取市議会議員選挙を、投票のしかたから候補者43人の公約まで、選挙公報と鳥取市選挙管理委員会の発表をもとに分かりやすくまとめた非公式ガイドです。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#1b2430; --sub:#5a6573; --line:#e3e7ec; --bg:#ffffff; --soft:#f5f7f9;
+  --main:#0c3a58; --main-soft:#e8f0f6; --accent:#c2410c; --accent-soft:#fff3ea;
+  --radius:10px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:64px}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"Noto Sans JP",system-ui,-apple-system,"Hiragino Sans",sans-serif;line-height:1.75;font-size:16px;-webkit-text-size-adjust:100%}
+a{color:var(--main)}
+.wrap{max-width:1080px;margin:0 auto;padding:0 16px}
+/* top nav */
+.nav{position:sticky;top:0;z-index:10;background:rgba(255,255,255,.96);backdrop-filter:blur(6px);border-bottom:1px solid var(--line)}
+.nav .wrap{display:flex;gap:4px;align-items:center;height:52px;overflow-x:auto;scrollbar-width:none}
+.nav .wrap::-webkit-scrollbar{display:none}
+.nav b{font-weight:900;color:var(--main);white-space:nowrap;margin-right:10px;font-size:15px}
+.nav a{white-space:nowrap;text-decoration:none;color:var(--ink);font-size:14px;padding:6px 10px;border-radius:999px}
+.nav a:hover{background:var(--soft)}
+/* hero */
+.hero{background:var(--main);color:#fff;padding:36px 0 30px}
+.hero .kicker{font-size:14px;opacity:.85;margin:0}
+.hero h1{font-size:clamp(28px,6vw,44px);line-height:1.25;margin:6px 0 14px;font-weight:900;letter-spacing:.02em}
+.hero .date{display:flex;flex-wrap:wrap;gap:10px 14px;align-items:baseline}
+.hero .big{font-size:clamp(22px,4.6vw,30px);font-weight:900}
+.hero .count{background:#fff;color:var(--main);font-weight:900;border-radius:999px;padding:2px 14px;font-size:16px}
+.hero .note{font-size:14px;opacity:.9;margin:10px 0 0}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:22px}
+.stat{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.22);border-radius:var(--radius);padding:12px 14px}
+.stat small{display:block;font-size:12px;opacity:.85}
+.stat strong{font-size:26px;font-weight:900;line-height:1.3}
+.stat span{font-size:13px}
+/* sections */
+section{padding:40px 0;border-bottom:1px solid var(--line)}
+h2{font-size:24px;font-weight:900;margin:0 0 6px;line-height:1.4}
+h2 .num{display:inline-block;background:var(--main);color:#fff;border-radius:6px;font-size:14px;padding:0 8px;margin-right:8px;vertical-align:4px}
+.lead{color:var(--sub);margin:0 0 20px;font-size:15px}
+h3{font-size:18px;margin:24px 0 8px}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.box{border:1px solid var(--line);border-radius:var(--radius);padding:16px 18px;background:#fff}
+.box h4{margin:0 0 6px;font-size:16px}
+.box p{margin:0;font-size:15px}
+.box.soft{background:var(--soft);border-color:transparent}
+.box.warn{background:var(--accent-soft);border-color:#f6d3bc}
+.steps{counter-reset:s;list-style:none;padding:0;margin:0;display:grid;gap:10px}
+.steps li{counter-increment:s;position:relative;padding:12px 14px 12px 52px;background:var(--soft);border-radius:var(--radius);font-size:15px}
+.steps li::before{content:counter(s);position:absolute;left:14px;top:12px;width:26px;height:26px;border-radius:50%;background:var(--main);color:#fff;font-weight:700;display:grid;place-items:center;font-size:14px}
+table{width:100%;border-collapse:collapse;font-size:14.5px}
+th,td{border-bottom:1px solid var(--line);padding:9px 8px;text-align:left;vertical-align:top}
+th{background:var(--soft);font-weight:700;white-space:nowrap}
+.tbl{overflow-x:auto;border:1px solid var(--line);border-radius:var(--radius)}
+.tbl table th:first-child,.tbl table td:first-child{padding-left:14px}
+.tag{display:inline-block;font-size:12px;border-radius:4px;padding:1px 7px;background:var(--main-soft);color:var(--main);font-weight:700;margin-right:4px}
+/* party bar */
+.partybar{display:flex;height:16px;border-radius:999px;overflow:hidden;margin:10px 0 8px;background:var(--soft)}
+.partybar i{display:block;height:100%}
+.legend{display:flex;flex-wrap:wrap;gap:6px 14px;font-size:14px;color:var(--sub);margin:0;padding:0;list-style:none}
+.legend li::before{content:"";display:inline-block;width:10px;height:10px;border-radius:2px;background:var(--c);margin-right:6px}
+/* candidate tools */
+.tools{position:sticky;top:52px;z-index:5;background:#fff;padding:12px 0;border-bottom:1px solid var(--line);margin-bottom:16px}
+.tools input{width:100%;font:inherit;font-size:16px;padding:10px 14px;border:1px solid #cfd6de;border-radius:var(--radius)}
+.chips{display:flex;gap:6px;flex-wrap:wrap;margin-top:10px}
+.chip{font:inherit;font-size:13.5px;border:1px solid #cfd6de;background:#fff;color:var(--ink);border-radius:999px;padding:4px 12px;cursor:pointer}
+.chip[aria-pressed="true"]{background:var(--main);border-color:var(--main);color:#fff}
+.chips .lbl{font-size:12px;color:var(--sub);align-self:center;margin-right:2px}
+.result{font-size:14px;color:var(--sub);margin:10px 0 0}
+.cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(310px,1fr));gap:14px}
+.card{border:1px solid var(--line);border-radius:var(--radius);padding:16px;display:flex;flex-direction:column;gap:8px;background:#fff}
+.card .head{display:flex;gap:10px;align-items:flex-start;justify-content:space-between}
+.card .no{font-size:12px;color:var(--sub)}
+.card .name{font-size:21px;font-weight:900;line-height:1.3;margin:0}
+.card .kana{font-size:12px;color:var(--sub);display:block}
+.card .party{font-size:12.5px;border:1px solid #cfd6de;border-radius:4px;padding:1px 8px;white-space:nowrap;color:var(--ink)}
+.card .copy{font-weight:700;font-size:15.5px;line-height:1.6;margin:0;padding:8px 10px;background:var(--soft);border-radius:6px}
+.card ul{margin:0;padding-left:1.2em;font-size:14.5px;line-height:1.65}
+.card ul li{margin:2px 0}
+.card .copy small{display:block;font-weight:500;font-size:13.5px;color:var(--sub);margin-top:2px}
+.card ul.sub{font-size:13.5px;color:var(--sub);padding-left:1em;list-style:"・"}
+.card .gh{margin:4px 0 0;font-size:13.5px;font-weight:700;color:var(--main)}
+.card .hw{margin:0;font-size:12.5px;color:var(--sub)}
+.card mark{background:#fff0a8;padding:0 1px}
+.card details{font-size:14px}
+.card summary{cursor:pointer;color:var(--main);font-weight:700}
+.card details p{margin:6px 0 0;color:var(--sub);white-space:pre-line}
+.card .themes{display:flex;flex-wrap:wrap;gap:4px}
+.card .links{overflow-wrap:anywhere;display:flex;flex-wrap:wrap;gap:6px 14px;font-size:13.5px;margin-top:auto;padding-top:6px;border-top:1px dashed var(--line)}
+.empty{padding:30px;text-align:center;color:var(--sub);background:var(--soft);border-radius:var(--radius)}
+footer{padding:30px 0 50px;font-size:13.5px;color:var(--sub)}
+footer ul{padding-left:1.2em}
+@media (max-width:760px){
+  .stats{grid-template-columns:repeat(2,1fr)}
+  .grid2,.grid3{grid-template-columns:1fr}
+  section{padding:32px 0}
+  h2{font-size:21px}
+  .cards{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<nav class="nav" aria-label="ページ内メニュー">
+  <div class="wrap">
+    <b>鳥取市議選2026</b>
+    <a href="#basics">きほん</a>
+    <a href="#howto">投票のしかた</a>
+    <a href="#early">期日前投票</a>
+    <a href="#candidates">候補者43人</a>
+    <a href="#after">開票</a>
+    <a href="#about">このページについて</a>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap">
+    <p class="kicker">非公式ガイド ｜ 出典：鳥取市選挙管理委員会・選挙公報</p>
+    <h1>鳥取市議会議員選挙<br>かんたんガイド</h1>
+    <div class="date">
+      <span class="big">11月22日（日）投票</span>
+      <span class="count" id="countdown"></span>
+    </div>
+    <p class="note">投票時間は <b>午前7時〜午後8時</b>（一部の投票所は午後7時まで。入場券で確認できます）</p>
+    <div class="stats">
+      <div class="stat"><small>選ばれる人数（定数）</small><strong>32</strong><span>人</span></div>
+      <div class="stat"><small>立候補した人</small><strong>43</strong><span>人</span></div>
+      <div class="stat"><small>落選する人</small><strong>11</strong><span>人</span></div>
+      <div class="stat"><small>前回（2022年）の投票率</small><strong>39.15</strong><span>%</span></div>
+    </div>
+  </div>
+</header>
+
+<main>
+<section id="basics">
+  <div class="wrap">
+    <h2><span class="num">1</span>そもそも何を決める選挙？</h2>
+    <p class="lead">鳥取市のルールとお金の使い道を決める「市議会」のメンバー32人を、4年に1回選ぶ選挙です。</p>
+    <div class="grid3">
+      <div class="box soft"><h4>市議会がすること</h4><p>市の予算（お金の使い道）や条例（市のルール）を話し合って決めます。市長が出した案に賛成・反対するのも市議会です。</p></div>
+      <div class="box soft"><h4>任期は4年</h4><p>今の議員の任期は2026年12月16日まで。今回選ばれた人が、次の4年間の鳥取市の議論を担います。</p></div>
+      <div class="box soft"><h4>投票は「1人の名前」</h4><p>投票用紙は1枚（白色）。候補者43人の中から<b>1人だけ</b>名前を書きます。得票の多い順に32人が当選します。</p></div>
+    </div>
+
+    <h3>立候補した43人のなりたち</h3>
+    <p style="margin:0;font-size:15px">党派は、鳥取市選挙管理委員会の「候補者一覧表」の届け出どおりです。</p>
+    <div class="partybar" id="partybar" role="img" aria-label="党派別の人数"></div>
+    <ul class="legend" id="partylegend"></ul>
+    <p style="font-size:14px;color:var(--sub);margin:10px 0 0">報道（日本海新聞・NHKなど）によると、現職25人・元職1人・新人17人。前回2022年は37人が立候補しました。</p>
+  </div>
+</section>
+
+<section id="howto">
+  <div class="wrap">
+    <h2><span class="num">2</span>投票のしかた（当日）</h2>
+    <p class="lead">11月22日（日）、入場券に書かれた投票所へ。</p>
+    <div class="grid2">
+      <ol class="steps">
+        <li><b>入場券を持って投票所へ。</b>ハガキは4人分が1枚になっているので、自分の分をミシン目で切り離して持っていきます。</li>
+        <li><b>受付で入場券を渡す。</b>投票用紙（白色）を1枚受け取ります。</li>
+        <li><b>候補者1人の名前を書く。</b>記載台に候補者の名前一覧が貼ってあります。ひらがなでも大丈夫です。</li>
+        <li><b>投票箱に入れて終わり。</b></li>
+      </ol>
+      <div style="display:grid;gap:10px">
+        <div class="box warn"><h4>入場券が届かない・なくした</h4><p>選挙人名簿に登録されていれば投票できます。投票所の係員に申し出てください。</p></div>
+        <div class="box"><h4>投票できる人</h4><p>平成20年（2008年）11月23日以前に生まれ、令和8年8月14日以前に鳥取市へ転入届を出し、引き続き住んでいる人。</p></div>
+        <div class="box"><h4>字を書くのが難しい人</h4><p>投票所の係員が代わりに書く「代理投票」や、点字での投票ができます（家族が代わりに書くことはできません）。</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="early">
+  <div class="wrap">
+    <h2><span class="num">3</span>当日行けない人は「期日前投票」</h2>
+    <p class="lead">11月16日（月）〜21日（土）。理由を書く「宣誓書」は入場券の裏にあります。<b>印鑑はいりません。</b></p>
+    <div class="tbl">
+      <table>
+        <thead><tr><th>場所</th><th>日にち</th><th>時間</th></tr></thead>
+        <tbody>
+          <tr><td>鳥取市役所 本庁舎（1階 西口エレベーター前）</td><td>11/16（月）〜21（土）</td><td>8:30〜20:00</td></tr>
+          <tr><td>国府町・河原町・用瀬町・佐治町・気高町・鹿野町・青谷町 の各総合支所、福部町コミュニティセンター</td><td>11/16（月）〜21（土）</td><td>8:30〜20:00</td></tr>
+          <tr><td>イオンモール鳥取北</td><td>11/16（月）〜21（土）</td><td>10:00〜20:00<br><small>（21日は19:00まで）</small></td></tr>
+          <tr><td>鳥取大学</td><td>11/20（金）のみ</td><td>10:00〜18:00</td></tr>
+          <tr><td>公立鳥取環境大学</td><td>11/17（火）のみ</td><td>10:00〜18:00</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p style="font-size:14px;color:var(--sub);margin:10px 0 0">※ 市役所本庁舎で投票する人は、イオンスタイル鳥取駅南の駐車場が使えます（11/20は混雑が予想されるため控えるよう案内されています）。※ 出張・入院中などの「不在者投票」もあります。詳しくは<a href="https://www.city.tottori.lg.jp/page/42131.html" target="_blank" rel="noopener">鳥取市選挙管理委員会のお知らせ</a>へ。</p>
+  </div>
+</section>
+
+<section id="candidates">
+  <div class="wrap">
+    <h2><span class="num">4</span>候補者43人の訴え</h2>
+    <p class="lead">選挙公報（候補者が自分で書いた原稿）から、見出しと公約を<b>原文のまま</b>抜き出しました。並び順は選挙公報の掲載順です。</p>
+    <div class="tools">
+      <input type="search" id="q" placeholder="名前・言葉でさがす（例：子育て、南北線、給食）" aria-label="候補者をさがす">
+      <div class="chips" id="themechips"><span class="lbl">テーマ</span></div>
+      <div class="chips" id="partychips"><span class="lbl">党派</span></div>
+      <p class="result" id="result"></p>
+    </div>
+    <div class="cards" id="cards"></div>
+    <p style="font-size:13.5px;color:var(--sub);margin-top:16px">※「テーマ」は、選挙公報の文章にそのテーマの言葉（例：子育てなら「子育て」「保育」「学校」など）が出てくるかどうかで機械的に分けたものです。主張の強さや中身の良し悪しを判断したものではありません。必ず<a href="https://www.city.tottori.lg.jp/uploaded/attachment/54816.pdf" target="_blank" rel="noopener">選挙公報の原本（PDF）</a>もご覧ください。</p>
+  </div>
+</section>
+
+<section id="after">
+  <div class="wrap">
+    <h2><span class="num">5</span>開票と結果</h2>
+    <div class="grid2">
+      <div class="box soft"><h4>開票</h4><p>11月22日（日）午後9時から、鳥取市民体育館（鳥取市吉成三丁目1-1）で行われます。</p></div>
+      <div class="box soft"><h4>結果を見るには</h4><p>鳥取市選挙管理委員会のウェブサイトで投票・開票速報が公開されます。<a href="https://www.city.tottori.lg.jp/page/42131.html" target="_blank" rel="noopener">選挙のお知らせページ</a></p></div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer id="about">
+  <div class="wrap">
+    <h2 style="font-size:18px;color:var(--ink)">このページについて</h2>
+    <ul>
+      <li>このページは、鳥取市選挙管理委員会の公表資料と選挙公報をもとに個人が作成した<b>非公式</b>のガイドです。特定の候補者・政党を応援したり反対したりするものではありません。</li>
+      <li>候補者の文章は選挙公報から原文のまま書き写していますが、読み取りの誤りがありえます。正確な内容は必ず原本でご確認ください。</li>
+      <li>出典：<a href="https://www.city.tottori.lg.jp/page/42131.html" target="_blank" rel="noopener">鳥取市議会議員選挙のお知らせ</a> ／ <a href="https://www.city.tottori.lg.jp/uploaded/attachment/54798.pdf" target="_blank" rel="noopener">立候補届出者一覧（PDF）</a> ／ <a href="https://www.city.tottori.lg.jp/uploaded/attachment/54816.pdf" target="_blank" rel="noopener">選挙公報（PDF）</a> ／ 立候補者の内訳は日本海新聞・NHK等の報道</li>
+      <li>お問い合わせ（選挙そのもの）：鳥取市選挙管理委員会事務局 選挙係 0857-30-8477</li>
+    </ul>
+    <p>最終更新：<span id="updated">2026年11月18日</span></p>
+  </div>
+</footer>
+
+<script>
+const PARTY_ORDER=["自由民主党","日本維新の会","公明党","日本共産党","国民民主党","参政党","無所属"];
+const PARTY_COLOR={"自由民主党":"#5b7a99","日本維新の会":"#7a9a6b","公明党":"#a88a5a","日本共産党":"#9a6b7a","国民民主党":"#6b8a9a","参政党":"#8a7a9a","無所属":"#c4ccd4"};
+const THEMES=[
+  {k:"子育て・教育",w:["子育て","子ども","子供","こども","教育","学校","保育","給食","不登校","放課後","部活"]},
+  {k:"福祉・医療・介護",w:["福祉","高齢","介護","医療","障が","障害","国保","補聴器","看護","見守り"]},
+  {k:"防災・安全",w:["防災","災害","減災","防犯","避難","安全"]},
+  {k:"経済・仕事",w:["経済","雇用","企業","産業","稼","働","商業","給料","起業","中小"]},
+  {k:"農林水産業",w:["農","林業","森林","漁","水産","一次産業","鳥獣"]},
+  {k:"交通・インフラ",w:["交通","バス","道路","南北線","鉄道","地域の足","インフラ","駅","通学路","移動"]},
+  {k:"観光・文化・スポーツ",w:["観光","文化","砂丘","鳥取城","スポーツ","伝統","歴史"]},
+  {k:"人口減少・若者・移住",w:["人口減少","移住","定住","若者","若い世代","Uターン"]},
+  {k:"中山間地域",w:["中山間"]},
+  {k:"人権・多様性",w:["人権","ジェンダー","差別","手話","尊厳","多様"]},
+  {k:"税金・行財政",w:["税","財政","予算","行政改革","議員定数","財源"]}
+];
+const esc=s=>String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+
+function countdown(){
+  const el=document.getElementById("countdown");
+  const now=new Date(); const day=new Date(2026,10,22); const today=new Date(now.getFullYear(),now.getMonth(),now.getDate());
+  const d=Math.round((day-today)/86400000);
+  if(d>0) el.textContent=`投票日まであと${d}日`;
+  else if(d===0) el.textContent="今日が投票日です";
+  else el.textContent="投票は終了しました";
+}
+
+let DATA=[], state={q:"",theme:null,party:null};
+
+function textOf(c){
+  return [c.catchcopy,c.subcopy,...c.policies,...c.policy_details.flat(),
+    ...c.policy_groups.flatMap(g=>[g.heading,...g.items]),...c.other_text,c.body].join("\n");
+}
+function policiesHTML(c,hi){
+  const sub=i=>{const s=c.policy_details[i]; return s&&s.length?`<ul class="sub">${s.map(x=>`<li>${hi(x)}</li>`).join("")}</ul>`:""};
+  if(c.policy_groups.length){
+    return c.policy_groups.map(g=>`${g.heading?`<p class="gh">${hi(g.heading)}</p>`:""}<ul>${g.items.map(p=>`<li>${hi(p)}${sub(c.policies.indexOf(p))}</li>`).join("")}</ul>`).join("");
+  }
+  if(!c.policies.length) return "";
+  return `${c.policies_heading?`<p class="gh">${hi(c.policies_heading)}</p>`:""}<ul>${c.policies.map((p,i)=>`<li>${hi(p)}${sub(i)}</li>`).join("")}</ul>`;
+}
+
+function render(){
+  const q=state.q.trim();
+  const list=DATA.filter(c=>{
+    if(state.party && c.party!==state.party) return false;
+    if(state.theme && !c.themes.includes(state.theme)) return false;
+    if(q){const hay=(c.name+c.kana+c.party+textOf(c)+(c.profile||"")).toLowerCase(); if(!hay.includes(q.toLowerCase())) return false;}
+    return true;
+  });
+  const hi=s=>{let t=esc(s); if(q){const r=new RegExp(esc(q).replace(/[.*+?^${}()|[\]\\]/g,"\\$&"),"gi"); t=t.replace(r,m=>`<mark>${m}</mark>`)} return t};
+  document.getElementById("result").textContent=`${list.length}人を表示中（全${DATA.length}人）`;
+  const box=document.getElementById("cards");
+  if(!list.length){box.innerHTML='<div class="empty">条件にあう候補者がいません。</div>';return}
+  box.innerHTML=list.map(c=>`
+    <article class="card" id="c${c.order}">
+      <div class="head">
+        <div><span class="no">公報 ${c.order}番目</span><h3 class="name">${hi(c.name)}<span class="kana">${esc(c.kana||"")}</span></h3></div>
+        <span class="party">${esc(c.party)}</span>
+      </div>
+      ${c.catchcopy?`<p class="copy">${hi(c.catchcopy)}${c.subcopy?`<small>${hi(c.subcopy)}</small>`:""}</p>`:""}
+      ${policiesHTML(c,hi)}
+      ${c.handwritten?`<p class="hw">※ 手書きの公報です。表記は原本の字のとおりに読み取っています。</p>`:""}
+      ${c.body?`<details><summary>本文を読む</summary><p>${hi(c.body)}</p></details>`:""}
+      ${c.other_text.length?`<details><summary>そのほかの記載</summary><p>${c.other_text.map(hi).join("\n")}</p></details>`:""}
+      ${c.profile?`<details><summary>プロフィール</summary><p>${hi(c.profile)}</p></details>`:""}
+      ${c.themes.length?`<div class="themes">${c.themes.map(t=>`<span class="tag">${esc(t)}</span>`).join("")}</div>`:""}
+      <div class="links">
+        <a href="https://www.city.tottori.lg.jp/uploaded/attachment/54816.pdf#page=${c.page}" target="_blank" rel="noopener">公報の原本（${c.page}ページ）</a>
+        ${c.url?`<a href="${esc(c.url)}" target="_blank" rel="noopener nofollow">本人のウェブサイト等</a>`:""}
+        ${c.url_text?`<span>届出URL：${esc(c.url_text)}（現在つながりません）</span>`:""}
+        ${c.sns?`<span>届出SNS：${esc(c.sns)}</span>`:""}
+      </div>
+    </article>`).join("");
+}
+
+function chips(id,items,key,counts){
+  const wrap=document.getElementById(id);
+  items.forEach(it=>{
+    const b=document.createElement("button"); b.className="chip"; b.type="button";
+    b.textContent=`${it}（${counts[it]||0}）`; b.setAttribute("aria-pressed","false");
+    b.onclick=()=>{state[key]=state[key]===it?null:it;
+      wrap.querySelectorAll(".chip").forEach(x=>x.setAttribute("aria-pressed",x===b&&state[key]?"true":"false")); render();};
+    wrap.appendChild(b);
+  });
+}
+
+fetch("data/candidates.json").then(r=>r.json()).then(d=>{
+  DATA=d.map(c=>({...c,themes:THEMES.filter(t=>t.w.some(w=>textOf(c).includes(w))).map(t=>t.k)}));
+  const pc={},tc={};
+  DATA.forEach(c=>{pc[c.party]=(pc[c.party]||0)+1; c.themes.forEach(t=>tc[t]=(tc[t]||0)+1)});
+  // party bar
+  const parties=PARTY_ORDER.filter(p=>pc[p]);
+  document.getElementById("partybar").innerHTML=parties.map(p=>`<i style="width:${pc[p]/DATA.length*100}%;background:${PARTY_COLOR[p]}" title="${p} ${pc[p]}人"></i>`).join("");
+  document.getElementById("partylegend").innerHTML=parties.map(p=>`<li style="--c:${PARTY_COLOR[p]}">${p} ${pc[p]}人</li>`).join("");
+  chips("themechips",THEMES.map(t=>t.k),"theme",tc);
+  chips("partychips",parties,"party",pc);
+  document.getElementById("q").addEventListener("input",e=>{state.q=e.target.value;render()});
+  render();
+});
+countdown();
+</script>
+</body>
+</html>
