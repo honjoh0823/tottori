@@ -97,12 +97,42 @@ th{background:var(--soft);font-weight:700;white-space:nowrap}
 .empty{padding:30px;text-align:center;color:var(--sub);background:var(--soft);border-radius:var(--radius)}
 footer{padding:30px 0 50px;font-size:13.5px;color:var(--sub)}
 footer ul{padding-left:1.2em}
+.tofind{display:none}
+.more{display:none}
+.nav .sp{display:none}
+@media (max-width:760px){.nav .sp{display:inline}}
 @media (max-width:760px){
   .stats{grid-template-columns:repeat(2,1fr)}
   .grid2,.grid3{grid-template-columns:1fr}
   section{padding:32px 0}
   h2{font-size:21px}
   .cards{grid-template-columns:1fr}
+  /* メニュー：スマホは短い名前で1行に収める */
+  .nav b,.nav .pc{display:none}
+  .nav .wrap{justify-content:space-between;gap:0}
+  .nav a{font-size:13.5px;padding:6px 8px}
+  /* 検索・絞りこみ：スマホでは画面に貼りつけず、テーマ・党派は横にすべらせる1行に */
+  .tools{position:static;padding:4px 0 12px}
+  .chips{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;margin-left:-16px;margin-right:-16px;padding:0 16px}
+  .chips::-webkit-scrollbar{display:none}
+  .chip{white-space:nowrap;flex:none;padding:6px 12px}
+  .chips .lbl{flex:none}
+  /* 期日前投票の表：スマホでは1か所ずつのカード型に */
+  .early thead{display:none}
+  .early tr{display:block;padding:10px 14px;border-bottom:1px solid var(--line)}
+  .early tr:last-child{border-bottom:0}
+  .early td{display:inline;border:0;padding:0}
+  .tbl.early table td:first-child{display:block;font-weight:700;padding:0 0 2px}
+  .early td:nth-child(2)::after{content:"　"}
+  .early td small{display:inline}
+  /* 候補者カード：小項目はたたんでおき「くわしく見る」で開く */
+  .card:not(.open) ul.sub{display:none}
+  .more{display:block;font:inherit;font-size:13.5px;font-weight:700;color:var(--main);background:var(--main-soft);border:0;border-radius:6px;padding:8px;width:100%;cursor:pointer}
+  .card .more .c,.card.open .more .o{display:none}
+  .card.open .more .c{display:inline}
+  /* 候補者を見ている間だけ「さがす」ボタンを出す */
+  .tofind{position:fixed;right:16px;bottom:16px;z-index:20;background:var(--main);color:#fff;border-radius:999px;padding:10px 16px;font-size:14px;font-weight:700;text-decoration:none;box-shadow:0 4px 14px rgba(0,0,0,.2)}
+  .tofind.show{display:block}
 }
 </style>
 </head>
@@ -112,11 +142,11 @@ footer ul{padding-left:1.2em}
   <div class="wrap">
     <b>鳥取市議選2026</b>
     <a href="#basics">きほん</a>
-    <a href="#howto">投票のしかた</a>
+    <a href="#howto">投票<span class="pc">のしかた</span><span class="sp">方法</span></a>
     <a href="#early">期日前投票</a>
     <a href="#candidates">候補者43人</a>
     <a href="#after">開票</a>
-    <a href="#about">このページについて</a>
+    <a href="#about" class="pc">このページについて</a>
   </div>
 </nav>
 
@@ -181,7 +211,7 @@ footer ul{padding-left:1.2em}
   <div class="wrap">
     <h2><span class="num">3</span>当日行けない人は「期日前投票」</h2>
     <p class="lead">11月16日（月）〜21日（土）。理由を書く「宣誓書」は入場券の裏にあります。<b>印鑑はいりません。</b></p>
-    <div class="tbl">
+    <div class="tbl early">
       <table>
         <thead><tr><th>場所</th><th>日にち</th><th>時間</th></tr></thead>
         <tbody>
@@ -222,6 +252,7 @@ footer ul{padding-left:1.2em}
   </div>
 </section>
 </main>
+<a href="#candidates" class="tofind" id="tofind">↑ さがす・しぼる</a>
 
 <footer id="about">
   <div class="wrap">
@@ -291,13 +322,14 @@ function render(){
   const box=document.getElementById("cards");
   if(!list.length){box.innerHTML='<div class="empty">条件にあう候補者がいません。</div>';return}
   box.innerHTML=list.map(c=>`
-    <article class="card" id="c${c.order}">
+    <article class="card${q?" open":""}" id="c${c.order}">
       <div class="head">
         <div><span class="no">公報 ${c.order}番目</span><h3 class="name">${hi(c.name)}<span class="kana">${esc(c.kana||"")}</span></h3></div>
         <span class="party">${esc(c.party)}</span>
       </div>
       ${c.catchcopy?`<p class="copy">${hi(c.catchcopy)}${c.subcopy?`<small>${hi(c.subcopy)}</small>`:""}</p>`:""}
       ${policiesHTML(c,hi)}
+      ${c.policy_details.some(s=>s&&s.length)?`<button type="button" class="more" onclick="this.closest('.card').classList.toggle('open')"><span class="o">▼ くわしく見る</span><span class="c">▲ 閉じる</span></button>`:""}
       ${c.handwritten?`<p class="hw">※ 手書きの公報です。表記は原本の字のとおりに読み取っています。</p>`:""}
       ${c.body?`<details><summary>本文を読む</summary><p>${hi(c.body)}</p></details>`:""}
       ${c.other_text.length?`<details><summary>そのほかの記載</summary><p>${c.other_text.map(hi).join("\n")}</p></details>`:""}
@@ -337,6 +369,12 @@ fetch("data/candidates.json").then(r=>r.json()).then(d=>{
   render();
 });
 countdown();
+// 候補者カードが画面に入っている間だけ「さがす・しぼる」ボタンを出す（スマホのみCSSで表示）
+if("IntersectionObserver" in window){
+  const btn=document.getElementById("tofind");
+  new IntersectionObserver(es=>es.forEach(e=>btn.classList.toggle("show",e.isIntersecting)),{rootMargin:"-40% 0px -40% 0px"})
+    .observe(document.getElementById("cards"));
+}
 </script>
 </body>
 </html>
