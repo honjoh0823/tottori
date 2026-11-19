@@ -15,16 +15,16 @@
   --radius:10px;
 }
 *{box-sizing:border-box}
-html{scroll-behavior:smooth;scroll-padding-top:64px}
+html{scroll-behavior:smooth;scroll-padding-top:68px}
 body{margin:0;background:var(--bg);color:var(--ink);font-family:"Noto Sans JP",system-ui,-apple-system,"Hiragino Sans",sans-serif;line-height:1.75;font-size:16px;letter-spacing:.02em;-webkit-text-size-adjust:100%}
 a{color:var(--main)}
 .wrap{max-width:1080px;margin:0 auto;padding:0 16px}
 /* top nav */
 .nav{position:sticky;top:0;z-index:10;background:rgba(255,255,255,.96);backdrop-filter:blur(6px);border-bottom:1px solid var(--line)}
-.nav .wrap{display:flex;gap:4px;align-items:center;height:52px;overflow-x:auto;scrollbar-width:none}
+.nav .wrap{display:flex;gap:4px;align-items:center;height:56px;overflow-x:auto;scrollbar-width:none}
 .nav .wrap::-webkit-scrollbar{display:none}
 .nav b{font-weight:900;color:var(--main);white-space:nowrap;margin-right:10px;font-size:16px}
-.nav a{white-space:nowrap;text-decoration:none;color:var(--ink);font-size:16px;padding:6px 10px;border-radius:999px}
+.nav a{white-space:nowrap;text-decoration:none;color:var(--ink);font-size:16px;padding:0 10px;min-height:44px;display:inline-flex;align-items:center;border-radius:999px}
 .nav a:hover{background:var(--soft)}
 /* hero */
 .hero{background:var(--main);color:#fff;padding:36px 0 30px}
@@ -67,10 +67,10 @@ th{background:var(--soft);font-weight:700;white-space:nowrap}
 .legend{display:flex;flex-wrap:wrap;gap:6px 16px;font-size:16px;color:var(--sub);margin:0;padding:0;list-style:none}
 .legend li::before{content:"";display:inline-block;width:10px;height:10px;border-radius:2px;background:var(--c);margin-right:6px}
 /* candidate tools */
-.tools{position:sticky;top:52px;z-index:5;background:#fff;padding:12px 0;border-bottom:1px solid var(--line);margin-bottom:16px}
+.tools{position:sticky;top:56px;z-index:5;background:#fff;padding:12px 0;border-bottom:1px solid var(--line);margin-bottom:16px}
 .tools input{width:100%;font:inherit;font-size:16px;padding:10px 14px;border:1px solid #cfd6de;border-radius:var(--radius)}
-.chips{display:flex;gap:6px;flex-wrap:wrap;margin-top:10px}
-.chip{font:inherit;font-size:16px;border:1px solid #cfd6de;background:#fff;color:var(--ink);border-radius:999px;padding:4px 12px;cursor:pointer}
+.chips{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}
+.chip{font:inherit;font-size:16px;border:1px solid #cfd6de;background:#fff;color:var(--ink);border-radius:999px;padding:4px 14px;min-height:44px;cursor:pointer}
 .chip[aria-pressed="true"]{background:var(--main);border-color:var(--main);color:#fff}
 .chips .lbl{font-size:14px;color:var(--sub);align-self:center;margin-right:2px}
 .result{font-size:16px;color:var(--sub);margin:10px 0 0}
@@ -90,12 +90,17 @@ th{background:var(--soft);font-weight:700;white-space:nowrap}
 .card .hw{margin:0;font-size:14px;color:var(--sub)}
 .card mark{background:#fff0a8;padding:0 1px}
 .card details{font-size:16px}
-.card summary{cursor:pointer;color:var(--main);font-weight:700}
+.card summary{cursor:pointer;color:var(--main);font-weight:700;min-height:44px;display:flex;align-items:center;gap:6px;list-style:none}
+.card summary::-webkit-details-marker{display:none}
+.card summary::before{content:"▶";font-size:12px}
+.card details[open] summary::before{content:"▼"}
 .card details p{margin:6px 0 0;color:var(--sub);white-space:pre-line}
 .card .themes{display:flex;flex-wrap:wrap;gap:4px}
-.card .links{overflow-wrap:anywhere;display:flex;flex-wrap:wrap;gap:6px 16px;font-size:16px;margin-top:auto;padding-top:6px;border-top:1px dashed var(--line)}
+.card .links a{display:inline-flex;align-items:center;min-height:44px}
+.card .links{overflow-wrap:anywhere;display:flex;flex-wrap:wrap;align-items:center;gap:0 20px;font-size:16px;margin-top:auto;padding-top:6px;border-top:1px dashed var(--line)}
 .empty{padding:30px;text-align:center;color:var(--sub);background:var(--soft);border-radius:var(--radius)}
 footer{padding:30px 0 50px;font-size:14px;color:var(--sub)}
+footer a{display:inline-block;padding:3px 0;line-height:1.5}
 footer ul{padding-left:1.2em}
 .tofind{display:none}
 .more{display:none}
@@ -108,7 +113,7 @@ footer ul{padding-left:1.2em}
   h2{font-size:21px}
   .cards{grid-template-columns:1fr}
   /* メニュー：スマホは短い名前で1行に収める */
-  .nav b,.nav .pc{display:none}
+  .nav b,.nav .pc,.hero .pc{display:none}
   .nav .wrap{justify-content:space-between;gap:0}
   .nav a{font-size:16px;padding:6px 4px}
   /* 検索・絞りこみ：スマホでは画面に貼りつけず、テーマ・党派は横にすべらせる1行に */
@@ -127,7 +132,7 @@ footer ul{padding-left:1.2em}
   .early td small{display:inline}
   /* 候補者カード：小項目はたたんでおき「くわしく見る」で開く */
   .card:not(.open) ul.sub{display:none}
-  .more{display:block;font:inherit;font-size:16px;font-weight:700;color:var(--main);background:var(--main-soft);border:0;border-radius:6px;padding:8px;width:100%;cursor:pointer}
+  .more{display:block;font:inherit;font-size:16px;font-weight:700;color:var(--main);background:var(--main-soft);border:0;border-radius:6px;padding:8px;min-height:44px;width:100%;cursor:pointer}
   .card .more .c,.card.open .more .o{display:none}
   .card.open .more .c{display:inline}
   /* 候補者を見ている間だけ「さがす」ボタンを出す */
