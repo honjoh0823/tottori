@@ -17,6 +17,9 @@
 *{box-sizing:border-box}
 body{margin:0;background:var(--bg);color:var(--ink);font-family:"Noto Sans JP",system-ui,-apple-system,"Hiragino Sans",sans-serif;line-height:1.75;font-size:16px;letter-spacing:.02em;-webkit-text-size-adjust:100%}
 a{color:var(--main)}
+/* 選択中の印（デジタル庁デザインシステムのフォーカス色：Yellow-300 と Black の二重。変えてはいけない色） */
+:focus-visible{outline:4px solid #000;outline-offset:2px;box-shadow:0 0 0 2px #ffd43d}
+a:focus-visible,summary:focus-visible{background:#ffd43d;color:#000;border-radius:4px}
 .wrap{max-width:1080px;margin:0 auto;padding:0 16px}
 .hero{background:var(--main);color:#fff;padding:36px 0 32px}
 .hero .kicker{font-size:14px;opacity:.9;margin:0}
@@ -28,6 +31,7 @@ h2{font-size:24px;font-weight:900;margin:0 0 6px;line-height:1.4}
 /* いま注目 */
 .feature{display:block;text-decoration:none;color:var(--ink);border:1px solid var(--border-ui);border-radius:var(--radius);padding:20px;background:#fff}
 .feature:hover{background:var(--soft)}
+.feature:focus-visible{background:#fff;color:var(--ink);border-radius:var(--radius)}
 .feature .label{display:inline-block;font-size:14px;font-weight:700;color:var(--accent);background:var(--accent-soft);border-radius:4px;padding:1px 8px}
 .feature h3{font-size:22px;font-weight:900;margin:8px 0 4px;line-height:1.45;color:var(--main)}
 .feature .when{font-size:18px;font-weight:700;margin:0}
@@ -63,7 +67,7 @@ h2{font-size:24px;font-weight:900;margin:0 0 6px;line-height:1.4}
 .hint select{font:inherit;font-size:16px;min-height:44px;padding:0 8px;border:1px solid var(--border-ui);border-radius:8px;background:#fff;color:var(--ink);margin-left:4px}
 .chart{position:relative;margin:0}
 .chart .row{display:grid;grid-template-columns:5.2em 1fr;align-items:center;gap:8px;width:100%;font:inherit;font-size:14px;line-height:1;background:none;border:0;padding:0;height:20px;cursor:pointer;color:var(--ink);text-align:left}
-.chart .row:hover,.chart .row:focus-visible{background:var(--main-soft);outline:none}
+.chart .row:hover,.chart .row:focus-visible{background:var(--main-soft)}
 .chart .nm{text-align:right;white-space:nowrap}
 .chart .track{position:relative;height:100%;display:flex;align-items:center}
 .chart .bar{height:12px;background:#a3adb8;border-radius:0 4px 4px 0;min-width:2px}
