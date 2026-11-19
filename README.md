@@ -1,6 +1,13 @@
-# 鳥取市議選2026 かんたんガイド
+# 鳥取の政治まとめ
+
+鳥取県の選挙・議会・首長のことを、公式発表をもとに分かりやすくまとめる非公式サイトです。
+
+公開URL：https://honjoh0823.github.io/tottori/
+
+## 鳥取市議選2026 かんたんガイド（`shigisen-2026/`）
 
 令和8年（2026年）11月22日（日）投票の鳥取市議会議員選挙を、有権者向けに分かりやすくまとめた非公式ページです。
+https://honjoh0823.github.io/tottori/shigisen-2026/
 
 - 選挙のきほん（定数32・立候補43人）
 - 当日の投票のしかた・期日前投票所の一覧
@@ -16,9 +23,10 @@
 
 | パス | 内容 |
 |---|---|
-| `index.html` | ページ本体（1ファイル。`data/candidates.json` を読み込む） |
-| `data/official.json` | 選管の候補者一覧（名前・党派・ウェブサイト） |
-| `data/candidates.json` | 公報の文字起こしと選管一覧を合わせたもの（ページが使うデータ） |
+| `index.html` | サイトのトップ（目次） |
+| `shigisen-2026/index.html` | 市議選ガイド本体（`data/candidates.json` を読み込む） |
+| `shigisen-2026/data/official.json` | 選管の候補者一覧（名前・党派・ウェブサイト） |
+| `shigisen-2026/data/candidates.json` | 公報の文字起こしと選管一覧を合わせたもの（ガイドが使うデータ） |
 | `tools/merge.py` | 上の2つを作るスクリプト |
 
 ## 方針
@@ -33,4 +41,6 @@
 python3 -m http.server 8931
 ```
 
-http://127.0.0.1:8931/ を開く。
+http://127.0.0.1:8931/ を開く（ガイドは http://127.0.0.1:8931/shigisen-2026/ ）。
+
+旧URL https://honjoh0823.github.io/tottori-senkyo-2026/ は、別リポジトリ `tottori-senkyo-2026` の転送ページでガイドへ飛ばしている。

@@ -8,7 +8,7 @@ import json
 import sys
 from pathlib import Path
 
-ROOT = Path(__file__).resolve().parent.parent
+ROOT = Path(__file__).resolve().parent.parent / "shigisen-2026"
 src = Path(sys.argv[1])
 
 # 公報の表記と選管一覧の表記が違う候補（公報 → 選管）
