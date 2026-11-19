@@ -42,9 +42,53 @@ h2{font-size:24px;font-weight:900;margin:0 0 6px;line-height:1.4}
 .area .soon{display:inline-block;font-size:14px;color:var(--sub);background:var(--soft);border-radius:4px;padding:0 8px;margin-top:8px}
 .rules{margin:0;padding-left:1.2em}
 .rules li{margin:4px 0}
+/* 鳥取を知る */
+.know{background:var(--soft)}
+.know h2 small{display:inline-block;font-size:16px;font-weight:700;color:var(--sub);margin-left:6px}
+.tiles{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:0 0 22px}
+.tile{background:#fff;border:1px solid var(--border);border-radius:var(--radius);padding:12px 14px}
+.tile small{display:block;font-size:14px;color:var(--sub);line-height:1.5}
+.tile strong{display:block;font-size:30px;font-weight:900;line-height:1.3;color:var(--main)}
+.tile strong span{font-size:16px;font-weight:700;margin-left:2px}
+.tile p{margin:2px 0 0;font-size:14px;color:var(--sub);line-height:1.5}
+.panel{background:#fff;border:1px solid var(--border);border-radius:var(--radius);padding:16px}
+.tabs{display:flex;gap:8px;flex-wrap:wrap;margin:0 0 12px}
+.tab{font:inherit;font-size:16px;border:1px solid var(--border-ui);background:#fff;color:var(--ink);border-radius:999px;padding:4px 16px;min-height:44px;cursor:pointer}
+.tab[aria-pressed="true"]{background:var(--main);border-color:var(--main);color:#fff;font-weight:700}
+.vs{display:flex;flex-wrap:wrap;align-items:center;gap:6px 14px;background:var(--soft);border-radius:8px;padding:10px 14px;margin:0 0 6px;font-size:16px;line-height:1.6}
+.vs .who{font-weight:900}
+.vs .t{color:var(--main)} .vs .o{color:var(--accent)}
+.vs .big{font-size:22px;font-weight:900}
+.hint{font-size:14px;color:var(--sub);margin:0 0 10px}
+.hint select{font:inherit;font-size:16px;min-height:44px;padding:0 8px;border:1px solid var(--border-ui);border-radius:8px;background:#fff;color:var(--ink);margin-left:4px}
+.chart{position:relative;margin:0}
+.chart .row{display:grid;grid-template-columns:5.2em 1fr;align-items:center;gap:8px;width:100%;font:inherit;font-size:14px;line-height:1;background:none;border:0;padding:0;height:20px;cursor:pointer;color:var(--ink);text-align:left}
+.chart .row:hover,.chart .row:focus-visible{background:var(--main-soft);outline:none}
+.chart .nm{text-align:right;white-space:nowrap}
+.chart .track{position:relative;height:100%;display:flex;align-items:center}
+.chart .bar{height:12px;background:#a3adb8;border-radius:0 4px 4px 0;min-width:2px}
+.chart .val{margin-left:6px;font-size:14px;white-space:nowrap;color:var(--ink);visibility:hidden}
+.chart .row:hover .val,.chart .row:focus-visible .val,.chart .row.t .val,.chart .row.o .val{visibility:visible}
+.chart .row.t .bar{background:var(--main)} .chart .row.t .nm,.chart .row.t .val{font-weight:900;color:var(--main)}
+.chart .row.o .bar{background:var(--accent)} .chart .row.o .nm,.chart .row.o .val{font-weight:700;color:var(--accent)}
+.chart .avg{position:absolute;top:0;bottom:0;width:0;border-left:1px solid var(--ink);pointer-events:none}
+.chart .avg span{position:absolute;top:-24px;left:0;transform:translateX(-50%);white-space:nowrap;font-size:14px;color:var(--ink);background:#fff;line-height:20px;padding:0 4px}
+.chart.hasavg{margin-top:26px}
+.know details{margin-top:14px}
+.know summary{cursor:pointer;color:var(--main);font-weight:700;min-height:44px;display:inline-flex;align-items:center}
+.know .tbl{max-height:420px;overflow:auto;border:1px solid var(--border);border-radius:var(--radius);background:#fff}
+.know table{width:100%;border-collapse:collapse;font-size:14px}
+.know th,.know td{padding:6px 10px;border-bottom:1px solid var(--line);text-align:right;white-space:nowrap}
+.know th:first-child,.know td:first-child{text-align:left}
+.know thead th{position:sticky;top:0;background:var(--soft);border-bottom:2px solid #1a1a1a}
+.know tr.t td{font-weight:900;color:var(--main);background:var(--main-soft)}
+.src{font-size:14px;color:var(--sub);margin:12px 0 0;line-height:1.6}
 footer{padding:30px 0 50px;font-size:14px;color:var(--sub)}
 @media (max-width:760px){
   .grid{grid-template-columns:1fr}
+  .tiles{grid-template-columns:repeat(2,1fr)}
+  .tile strong{font-size:26px}
+  .panel{padding:12px 10px}
   section{padding:30px 0}
   h2{font-size:21px}
 }
@@ -56,11 +100,33 @@ footer{padding:30px 0 50px;font-size:14px;color:var(--sub)}
   <div class="wrap">
     <p class="kicker">非公式サイト ｜ 出典は選挙管理委員会・議会などの公式発表</p>
     <h1>鳥取の政治まとめ</h1>
-    <p>鳥取県の選挙・議会・首長のことを、だれでも分かる言葉でまとめていきます。</p>
+    <p>まずは、鳥取を知ることから。全国とくらべながら、鳥取の今と、選挙・議会のことを見ていきます。</p>
   </div>
 </header>
 
 <main>
+<section class="know" id="shiru">
+  <div class="wrap">
+    <h2>鳥取を知る<small>① 人口</small></h2>
+    <p class="lead">47都道府県の中で、鳥取県はどんな県？ 数字でくらべてみましょう。</p>
+    <div class="tiles" id="tiles"></div>
+    <div class="panel">
+      <div class="tabs" id="tabs">
+        <button class="tab" data-k="pop" aria-pressed="true">人口</button>
+        <button class="tab" data-k="old" aria-pressed="false">65歳以上の割合</button>
+        <button class="tab" data-k="young" aria-pressed="false">15歳未満の割合</button>
+      </div>
+      <div class="vs" id="vs" aria-live="polite"></div>
+      <p class="hint"><label>くらべる県：<select id="pick"></select></label>　グラフの県を押しても選べます。</p>
+      <div class="chart" id="chart"></div>
+      <details>
+        <summary>表で見る</summary>
+        <div class="tbl"><table id="table"></table></div>
+      </details>
+    </div>
+    <p class="src" id="src"></p>
+  </div>
+</section>
 <section>
   <div class="wrap">
     <h2>いま注目</h2>
@@ -133,5 +199,79 @@ footer{padding:30px 0 50px;font-size:14px;color:var(--sub)}
   </div>
 </footer>
 
+<script>
+(function(){
+const T="鳥取県";
+let D,ROWS,NAT,key="pop",other="島根県";
+const M={
+  pop:{label:"人口",val:r=>r.pop/10,fmt:v=>v.toFixed(1)+"万人",avg:null},
+  old:{label:"65歳以上の割合",val:r=>r.old/r.pop*100,fmt:v=>v.toFixed(1)+"%",avg:"全国"},
+  young:{label:"15歳未満の割合",val:r=>r.young/r.pop*100,fmt:v=>v.toFixed(1)+"%",avg:"全国"}
+};
+const $=id=>document.getElementById(id);
+const byName=n=>ROWS.find(r=>r.name===n);
+function rank(k,name){const m=M[k];const s=[...ROWS].sort((a,b)=>m.val(b)-m.val(a));return s.findIndex(r=>r.name===name)+1}
+function tiles(){
+  const t=byName(T),nat=NAT;
+  const pr=rank("pop",T),or=rank("old",T),yr=rank("young",T);
+  const pct=(a,b)=>(a/b*100).toFixed(1);
+  $("tiles").innerHTML=`
+  <div class="tile"><small>鳥取県の人口</small><strong>${(t.pop/10).toFixed(1)}<span>万人</span></strong><p>${pr===47?"47都道府県で<b>いちばん少ない</b>":"47都道府県で"+pr+"位"}</p></div>
+  <div class="tile"><small>日本全体にしめる割合</small><strong>${pct(t.pop,nat.pop)}<span>%</span></strong><p>日本の約${Math.round(nat.pop/t.pop)}人に1人</p></div>
+  <div class="tile"><small>65歳以上の割合</small><strong>${pct(t.old,t.pop)}<span>%</span></strong><p>全国 ${pct(nat.old,nat.pop)}%／高い方から${or}位</p></div>
+  <div class="tile"><small>15歳未満の割合</small><strong>${pct(t.young,t.pop)}<span>%</span></strong><p>全国 ${pct(nat.young,nat.pop)}%／高い方から${yr}位</p></div>`;
+}
+function vs(){
+  const m=M[key],t=byName(T),o=byName(other);
+  const tv=m.val(t),ov=m.val(o);
+  let msg;
+  if(key==="pop"){
+    const r=ov/tv;
+    msg=r>=1?`<span class="who o">${other}</span>は鳥取県の <span class="big o">${r>=10?Math.round(r):r.toFixed(1)}倍</span>`
+            :`<span class="who o">${other}</span>は鳥取県の <span class="big o">${(r*100).toFixed(0)}%</span>`;
+  }else{
+    const d=ov-tv;
+    msg=Math.abs(d)<0.05?`<span class="who o">${other}</span>と鳥取県は <span class="big o">ほぼ同じ</span>`
+       :`<span class="who o">${other}</span>は鳥取県より <span class="big o">${Math.abs(d).toFixed(1)}ポイント${d>0?"高い":"低い"}</span>`;
+  }
+  $("vs").innerHTML=`<span><span class="who t">鳥取県</span> ${m.fmt(tv)}（${rank(key,T)}位）</span><span><span class="who o">${other}</span> ${m.fmt(ov)}（${rank(key,other)}位）</span><span>${msg}</span>`;
+}
+function chart(){
+  const m=M[key];
+  const s=[...ROWS].sort((a,b)=>m.val(b)-m.val(a));
+  const max=Math.max(...s.map(m.val));
+  const el=$("chart");
+  el.classList.toggle("hasavg",!!m.avg);
+  el.innerHTML=s.map(r=>{const v=m.val(r);const c=r.name===T?"t":r.name===other?"o":"";
+    return `<button class="row ${c}" data-n="${r.name}" aria-label="${r.name} ${m.fmt(v)}"><span class="nm">${r.name}</span><span class="track"><span class="bar" style="width:calc((100% - 5.5em) * ${(v/max).toFixed(4)})"></span><span class="val">${m.fmt(v)}</span></span></button>`}).join("");
+  if(m.avg){
+    const nv=m.val(NAT);
+    const first=el.querySelector(".track");
+    const left=first.offsetLeft, w=first.clientWidth;
+    const a=document.createElement("div");a.className="avg";
+    const em=parseFloat(getComputedStyle(first).fontSize);
+    a.style.left=(left+(w-5.5*em)*nv/max)+"px";
+    a.innerHTML=`<span>全国 ${m.fmt(nv)}</span>`;el.appendChild(a);
+  }
+  el.querySelectorAll(".row").forEach(b=>b.onclick=()=>{if(b.dataset.n!==T){other=b.dataset.n;$("pick").value=other;chart();vs();}});
+}
+function table(){
+  const pct=(a,b)=>(a/b*100).toFixed(1);
+  const s=[...ROWS].sort((a,b)=>b.pop-a.pop);
+  $("table").innerHTML=`<thead><tr><th>都道府県</th><th>人口（万人）</th><th>65歳以上</th><th>15歳未満</th></tr></thead><tbody>`+
+   [NAT,...s].map(r=>`<tr class="${r.name===T?"t":""}"><td>${r.name}</td><td>${(r.pop/10).toFixed(1)}</td><td>${pct(r.old,r.pop)}%</td><td>${pct(r.young,r.pop)}%</td></tr>`).join("")+"</tbody>";
+}
+document.querySelectorAll("#tabs .tab").forEach(b=>b.onclick=()=>{
+  key=b.dataset.k;document.querySelectorAll("#tabs .tab").forEach(x=>x.setAttribute("aria-pressed",x===b));chart();vs();});
+let rt;addEventListener("resize",()=>{clearTimeout(rt);rt=setTimeout(chart,150)});
+fetch("data/pref_population_2024.json").then(r=>r.json()).then(d=>{
+  D=d;NAT=d.rows.find(r=>r.code==="00");ROWS=d.rows.filter(r=>r.code!=="00");
+  $("pick").innerHTML=ROWS.filter(r=>r.name!==T).map(r=>`<option${r.name===other?" selected":""}>${r.name}</option>`).join("");
+  $("pick").onchange=e=>{other=e.target.value;chart();vs();};
+  tiles();vs();chart();table();
+  $("src").innerHTML=`出典：<a href="${d.source_url}" target="_blank" rel="noopener">${d.source}</a>。割合は千人単位の数から計算しているため、公表値と0.1ポイントほどずれることがあります。`;
+});
+})();
+</script>
 </body>
 </html>
